@@ -1,0 +1,10 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Lucas Kunz <lucaskunz1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "sass": "^1.41.0"
+  }
+}
