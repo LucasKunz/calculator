@@ -5,9 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/main.css">
+    <script src="./index.js"></script>
     <title>Calculator</title>
 </head>
 <body>
-    
+    <main>
+        <div class="calculator">
+            <div class="calculator__display" id="display">
+                <span class="calculator__display--previousResult"></span>
+                <span class="calculator__display--currentResult"></span>
+            </div>
+            <div class="calculator__keys">
+                <button type="button" class="calculator__operations" value="ON">ON/CE</button>
+                <button type="button" class="calculator__operations" value="AC">AC</button>
+                <button type="button" class="calculator__operations" value="/">/</button>
+                <button type="button" class="calculator__operations" value="x">x</button>
+                <button type="button" class="calculator__numbers" value="7">7</button>
+                <button type="button" class="calculator__numbers" value="8">8</button>
+                <button type="button" class="calculator__numbers" value="9">9</button>
+                <button type="button" class="calculator__operations" value="-">-</button>
+                <button type="button" class="calculator__numbers" value="4">4</button>
+                <button type="button" class="calculator__numbers" value="5">5</button>
+                <button type="button" class="calculator__numbers" value="6">6</button>
+                <button type="button" class="calculator__operations" value="+">+</button>
+                <button type="button" class="calculator__numbers" value="1">1</button>
+                <button type="button" class="calculator__numbers" value="2">2</button>
+                <button type="button" class="calculator__numbers" value="3">3</button>
+                <button type="button" class="calculator__numbers calculator--result" value="=">=</button>
+                <button type="button" class="calculator__numbers" value="0">0</button>
+                <button type="button" class="calculator__numbers" value="00">00</button>
+                <button type="button" class="calculator__numbers" value=".">.</button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
