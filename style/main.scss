@@ -1,0 +1,78 @@
+$calculator-color: rgb(79, 85, 88);
+$display-color: rgb(168, 157, 86);
+$numbers-color: rgb(56, 51, 41);
+$keys-color: #fff;
+$operations-color: rgb(184, 192, 185);
+$result-color: #0df2fb;
+
+$color: #ffe9e9;
+$color-dark: darken($color, 10%);
+$color-border: rgba(darken($color, 60%), 0.45);
+$color-text: darken($color, 85%);
+
+body {
+  background-color: rgb(206, 198, 198);
+  margin: 0;
+}
+
+.calculator {
+  align-items: center;
+  background-color: $calculator-color;
+  display: flex;
+  flex-direction: column;
+  height: 30rem;
+  justify-content: space-between;
+  left: 50%;
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, 25%);
+  width: 20rem;
+
+  &__display {
+    background-color: $display-color;
+    height: 4rem;
+    position: relative;
+    top: 5rem;
+    width: 90%;
+
+    &--previousResult {
+      height: 1.8em;
+      position: absolute;
+      right: 1em;
+      top: 0.5em;
+    }
+
+    &--currentResult {
+      height: 1.8;
+      position: absolute;
+      right: 1em;
+      bottom: 0.5em;
+    }
+  }
+
+  &__keys {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__numbers {
+    background: $numbers-color;
+    color: $keys-color;
+    font-size: 1.5rem;
+  }
+
+  &__operations {
+    background: $operations-color;
+    color: $keys-color;
+    font-size: 1.5rem;
+  }
+
+  &--result {
+    background-color: $result-color;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 6;
+  }
+}
