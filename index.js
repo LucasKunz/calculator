@@ -2,12 +2,12 @@
   const intervalGetProperties = 100;
 
   const init = async () => {
-    const values = { valueOne: '', valueTwo: '', operation: "" };
+    const values = { valueOne: "", valueTwo: "", operation: "" };
 
     const display = await getDisplay();
     const numbers = await getValuesNumbers();
     const operations = await getValuesOperations();
-    
+
     setNumbers(numbers, values, display);
     setOperation(operations, values);
   };
@@ -51,23 +51,33 @@
   const setNumbers = (numbers, values) => {
     numbers.forEach((element) => {
       element.addEventListener("click", () => {
-        if (values.valueOne.length < 9 && values.operation == '') {
+        if (
+          values.valueOne.length < 9 &&
+          values.operation == "" &&
+          element.value !== "="
+        ) {
           values.valueOne += parseInt(element.value);
           display.children[0].innerText = values.valueOne;
         }
 
         setCurrentValue(values);
-        
+
         if (values.operation == "") return;
-        
-        if (values.valueTwo.length < 9) {
+
+        if (values.valueTwo.length < 9 && element.value !== "=") {
           values.valueTwo += element.value;
-          display.children[0].innerText = values.valueOne + values.operation + values.valueTwo;
+          display.children[0].innerText =
+            values.valueOne + values.operation + values.valueTwo;
         }
 
         setCurrentValue(values);
 
-        if (element.value === '=') calculate(values);
+        if (element.value === "=") {
+          display.children[1].innerText = "";
+          display.children[0].innerText = calculate(values);
+          values.valueOne = calculate(values);
+          values.valueTwo = "";
+        }
       });
     });
   };
@@ -75,31 +85,44 @@
   const setOperation = (operation, values) => {
     operation.forEach((op) => {
       op.addEventListener("click", () => {
-        if (values.valueOne == "") return;
+        if (values.valueOne == "" || op.value == "ON" || op.value == "=") return;
+        if (op.value == 'AC'){
+          return clear(values);
+        } 
+
         values.operation = op.value;
-        display.children[0].innerText = values.valueOne + values.operation + values.valueTwo
-        return setCurrentValue(values)
+        display.children[0].innerText = values.valueOne + values.operation + values.valueTwo;
+        return setCurrentValue(values);
       });
     });
   };
 
-  const calculate = (values) => { 
-    switch(values.operation) {
-      case '+': 
-        return parseInt(values.valueOne) +  parseInt(values.valueTwo);
-      case '-': 
-        return parseInt(values.valueOne) -  parseInt(values.valueTwo);
-      case '/': 
-        return parseInt(values.valueOne) /  parseInt(values.valueTwo);
-      case 'x': 
-        return parseInt(values.valueOne) *  parseInt(values.valueTwo);
+  const calculate = (values) => {
+    if (values.valueTwo == "") return values.valueOne;
+    switch (values.operation) {
+      case "+":
+        return parseInt(values.valueOne) + parseInt(values.valueTwo);
+      case "-":
+        return parseInt(values.valueOne) - parseInt(values.valueTwo);
+      case "/":
+        return parseInt(values.valueOne) / parseInt(values.valueTwo);
+      case "x":
+        return parseInt(values.valueOne) * parseInt(values.valueTwo);
     }
   };
 
   const setCurrentValue = (values) => {
-    console.log(values)
-    display.children[1].innerText = values.valueOne;
-    if (values.valueTwo !== '') return display.children[1].innerText = calculate(values);
+    display.children[1].innerText = `= ${values.valueOne}`;
+    if (values.valueTwo !== "")
+      return (display.children[1].innerText = `= ${calculate(values)}`);
+  };
+
+  const clear = (values) => {
+    display.children[1].innerText = '';
+    display.children[0].innerText = '0';
+    values.valueOne = '';
+    values.valueTwo = '';
+    values.operation = '';
   }
 
   init();
