@@ -1,3 +1,5 @@
-# calculator
+# Calculator
 
-https://www.awesomescreenshot.com/video/5418061?key=c99a526c49d6682ec4210bbd6b07bb3d
+<h3> Create a calculator with html, css and javascript </h3>
+
+<img src="./calculator.gif" />
