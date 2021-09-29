@@ -5,11 +5,6 @@ $keys-color: #fff;
 $operations-color: rgb(184, 192, 185);
 $result-color: #0df2fb;
 
-$color: #ffe9e9;
-$color-dark: darken($color, 10%);
-$color-border: rgba(darken($color, 60%), 0.45);
-$color-text: darken($color, 85%);
-
 body {
   background-color: rgb(206, 198, 198);
   margin: 0;
@@ -32,6 +27,7 @@ body {
 
   &__display {
     background-color: $display-color;
+    border-radius: 0.5em;
     height: 4rem;
     position: relative;
     top: 3rem;
@@ -39,6 +35,7 @@ body {
 
     &--previousResult {
       height: 1.8em;
+      font-size: 20px;
       position: absolute;
       right: 1em;
       top: 0.5em;
@@ -46,9 +43,10 @@ body {
 
     &--currentResult {
       height: 1.8;
+      font-size: 20px;
       position: absolute;
       right: 1em;
-      bottom: 0.5em;
+      bottom: 0.3em;
     }
   }
 
@@ -101,6 +99,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     outline: none;
+    padding: 0 0.8em;
     position: relative;
     text-transform: uppercase;
     transform-style: preserve-3d;
@@ -108,7 +107,7 @@ body {
 
     &::before {
       border-radius: inherit;
-      box-shadow: 0 0 0 0px $color-border, 0 0.3em 0 0 #464444;
+      box-shadow: 0 0 0 0px, 0 0.3em 0 0 #464444;
       content: "";
       height: 100%;
       left: 0;
@@ -132,7 +131,7 @@ body {
       transform: translate(0, 0.40em);
 
       &::before {
-        box-shadow: 0 0 0 0px $color-border, 0 0 $color;
+        box-shadow: 0 0 0 0px , 0 0;
         transform: translate3d(0, 0, -1em);
       }
     }
